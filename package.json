@@ -13,6 +13,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fullcalendar": "^3.10.5",
+    "node": "^17.2.0",
     "nodemon": "^2.0.15"
   },
   "type": "module"
