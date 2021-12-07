@@ -22,7 +22,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 app.get("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects").select("*");
 	res.json(data);
-	console.log(data);
+	console.log(data, error);
 });
 
 //INSERT TASKS
