@@ -18,7 +18,7 @@ const supabaseKey =
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 //SELECT TASKS
-console.log(supabase)
+// console.log(supabase)
 app.get("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects").select("*");
 	res.json(data);
