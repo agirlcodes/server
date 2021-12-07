@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // }
     // SAVE INPUT TO DATABASE
       function save() {
-        fetch('http://68.183.39.213/userdata', {
+        fetch('http://localhost:3000/userdata', {
           method: 'POST',
           headers: {
             'Accept':'application/json',
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     // GETTING DATA FROM DATABASE 
       function load() {
-        fetch('http://68.183.39.213/userdata')
+        fetch('http://localhost:3000/userdata')
           .then(res => res.json())
           .then(data => {
             // console.log(data)
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       function deleteItem(){
                         // function dataDelete(){
                           // e.preventDefault();
-                          fetch('http://68.183.39.213/userdata', {
+                          fetch('http://localhost:3000/userdata', {
                             headers: {
                               'Accept':'application/json',
                               'Content-Type':'application/json'
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //     function deleteItem(e){
         //       // function dataDelete(){
         //         e.preventDefault();
-        //         fetch('http://68.183.39.213/userdata', {
+        //         fetch('http://localhost:3000/userdata', {
         //           headers: {
         //             'Accept':'application/json',
         //             'Content-Type':'application/json'
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //     function deleteItem(e){
       //       // function dataDelete(){
       //         e.preventDefault();
-      //         fetch('http://68.183.39.213/userdata', {
+      //         fetch('http://localhost:3000/userdata', {
       //           headers: {
       //             'Accept':'application/json',
       //             'Content-Type':'application/json'
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //       tr.classList.toggle("strike"); 
       //       if (todoList.id == this.dataset.id);
       //       // done = !done
-      //       fetch('http://68.183.39.213/userdata/${userdata.done}', {
+      //       fetch('http://localhost:3000/userdata/${userdata.done}', {
       //         method: 'PUT',
       //         headers: {
       //           'Accept':'application/json',
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 //API FOR TO-DO LIST
-  fetch('http://68.183.39.213/tasks')
+  fetch('http://localhost:3000/tasks')
   .then(response =>response.json())
   .then(response =>{ 
     let data = response
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // EDIT TASKS
 // add task to option
-fetch('http://68.183.39.213/tasks')
+fetch('http://localhost:3000/tasks')
 .then(response =>response.json())
 .then(data =>{ 
   let editData = document.getElementById('editTaskList')
@@ -392,7 +392,7 @@ let deleteBtn = document.getElementById('removeTask')
     // let taskCall = document.getElementsByTagName()
     let taskId = document.getElementById(`${task.id}`)
     console.log(`ready to delete ${taskId}`)
-    // fetch('http://68.183.39.213/tasks/${el.id}', {
+    // fetch('http://localhost:3000/tasks/${el.id}', {
     //   METHOD: 'DELETE'
         // headers: {
         //   'Content-type': 'application/json'
@@ -407,7 +407,7 @@ addTaskBtn.addEventListener('click', (e) => {
   console.log("i have been pressed:  added btn")
   const taskAdded = document.getElementById('taskAdded').value
   console.log(taskAdded)
-  fetch('http://68.183.39.213/tasks', {
+  fetch('http://localhost:3000/tasks', {
       method: 'POST',
       headers: {
         'Accept':'application/json',
