@@ -1,0 +1,196 @@
+body {
+  font-family: monospace;
+}
+
+.container {
+  margin: 0%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 4fr;
+      grid-template-columns: 2fr 4fr;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+}
+
+.container #toDoList {
+  margin-right: 2%;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+.container #toDoList header {
+  background-color: #b6ac8c;
+  height: 60px;
+  letter-spacing: 5px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.container #toDoList header h1 {
+  margin: 0%;
+  padding: 5%;
+}
+
+.container #toDoList main {
+  max-height: 100%;
+  background-color: #f8f8f8;
+}
+
+.container #toDoList main #todoTable {
+  padding: 5%;
+  width: 100%;
+  height: 100px;
+}
+
+.container #toDoList main #todoTable th {
+  width: auto;
+  text-align: left;
+  font-size: 15px;
+}
+
+.container #toDoList main #todoTable th i {
+  padding-left: 3%;
+}
+
+.container #toDoList main h3 {
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  letter-spacing: 5px;
+  background-color: #cbd7aa;
+  height: 50px;
+}
+
+.container #toDoList main #addTaskToCal, .container #toDoList main .taskSetting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container #toDoList main #editTaskSetting, .container #toDoList main #deleteTaskSetting {
+  padding-top: 10%;
+  height: auto;
+}
+
+.container #toDoList main label, .container #toDoList main select, .container #toDoList main #taskAdded, .container #toDoList main #dateValue {
+  margin: 2%;
+  margin-left: 5%;
+}
+
+.container #toDoList main label {
+  width: 50%;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.container #toDoList main #taskAdded, .container #toDoList main #dateValue, .container #toDoList main select {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 50%;
+  height: 30px;
+}
+
+.container #toDoList main #dataToCalendar, .container #toDoList main #addTaskBtn, .container #toDoList main #removeTask {
+  margin-top: 2%;
+  height: 50px;
+  width: 100%;
+  background: #e2e2e2;
+  border: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.container #toDoList main #dataToCalendar:hover {
+  background-color: #96a07b;
+  color: white;
+}
+
+.container #toDoList main #addTaskBtn:hover {
+  background-color: #96a07b;
+  color: white;
+}
+
+.container #toDoList main #removeTask:hover {
+  background-color: #96a07b;
+  color: white;
+}
+
+.container #calendar {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  border: none;
+  background-color: #cbd7aa;
+}
+
+.container #calendar .fc-view-harness {
+  border: none;
+}
+
+.container #calendar .fc-header-toolbar {
+  border: none;
+}
+
+.container #calendar .fc-toolbar-chunk {
+  padding: 1%;
+  color: white;
+  text-align: center;
+  width: auto;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.container #calendar .fc-daygrid-day-number {
+  font-size: 15px;
+}
+
+.container #calendar .fc-button {
+  background-color: #cbd7aa;
+  border: none;
+  font-size: 17px;
+}
+
+.container #calendar .fc-button:hover {
+  background-color: #abb68c;
+}
+
+.container #calendar .fc-col-header {
+  margin: 0%;
+  background-color: #474747;
+  color: white;
+  border: 5px 0px 5px 5px solid #cbd7aa;
+}
+
+.container #calendar .fc-daygrid-day, .container #calendar .fc-scrollgrid-sync-table {
+  background-color: white;
+  border: 5px solid #cbd7aa;
+}
+
+.container #calendar .fc-theme-standard th {
+  border: 0px;
+}
+
+.container footer {
+  margin-top: 2%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/span 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  background-color: #b6ac8c;
+}
+
+.container footer p {
+  margin: 1%;
+  color: white;
+}
+/*# sourceMappingURL=main.css.map */

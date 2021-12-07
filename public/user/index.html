@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css">
+  <script src="https://kit.fontawesome.com/3895cd02be.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="http://68.183.39.213/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="toDoList">
+      <header>
+        <h1>TASKS</h1>
+      </header>
+      <main>
+        <!-- TO-DO LIST -->
+        <table id="todoTable">
+          <tr id="headers">
+            <th><i class="far fa-calendar-check"></i></th>
+            <th>To-do</th>
+            <th>date</th>
+          </tr>
+        </table>
+        <!-- Add tasks -->
+        <h3>Set Tasks</h3>
+        <form id="addTaskToCal" action="" method="post">
+          <label for="">Task Name</label>
+          <select id="selectData" name="calendarTaskSelected"></select>
+          <br>
+          <label for="">Date</label>
+          <input type="date" name="dateValue" id="dateValue">
+          <button id="dataToCalendar" id="addToTable">ADD TASK</button>
+        </form>
+        <!-- Settings -->
+        <h3>Settings</h3>
+        <!-- ADD TASKS -->
+        <div class="taskSetting">
+          <form action="" id="editTaskSetting">
+            <label for="">Add Task</label><br>
+            <input type="text" name="" id="taskAdded" placeholder="enter task name">
+            <button id="addTaskBtn" type="submit">ADD</button>
+          </form>
+          <!-- DELETE TASK -->
+          <form action="" id="deleteTaskSetting" method="">
+            <label for="">Delete</label>
+            <br>
+            <select name="" id="editTaskList"></select>
+            <br>
+            <button id="removeTask">DELETE</button>
+          </form>
+        </div>
+        <button id="logoutBtn">logout</button>
+
+        <!-- DELETE TASKS -->
+        <!-- https://www.youtube.com/watch?v=ccX3ApO4qz8 -->
+        <!-- <button>Delete Task</button>
+
+              <form action="" method="post">
+                <label for="">Task Name</label>
+                <br>
+                <select name="" id="deleteTask">
+                </select>
+                <br>
+              </form> -->
+      </main>
+    </div>
+    <div id='calendar'></div>
+    <!-- <div class="popup"></div> -->
+    <footer>
+      <p>developed by agirlcodes</p>
+    </footer>
+  </div>
+</body>
+<!-- <script src='fullcalendar/main.js'></script> -->
+<!-- <script src="/frontEnd/js/calendarAPI.js"></script> -->
+<script src="script.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+<script>
+    // LOGOUT
+  // const logoutBtn = document.getElementById('logoutBtn')
+  //   logoutBtn.addEventListener('click',()=>{
+  //     // e.preventDefault()
+  //       async function signout() {
+  //         const { error } = await supabase.auth.signOut(
+  //           {redirectTo:"backEnd/html/login.html"}
+  //         );
+  //         console.log("i am ready to logout")
+  //       }
+  //   signout();
+//   })
+// </script>
+
+</html>

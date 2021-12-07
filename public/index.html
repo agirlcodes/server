@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://68.183.39.213/login.css">
+    <title>LogIn to your calender</title>
+</head>
+<body>
+    <header>
+        <h1>GET YOUR LIFE TOGETHER!</h1>
+    </header>
+    <div class="container">
+        <img id="background-image" src="https://marketplace.canva.com/EADaoxCT4sI/2/0/800w/canva-multicoloured-pastel-flowers-simple-calendar-QwxroLEZnUc.jpg" alt="">
+        <main>
+            <article>
+                <p>How often do you find yourself struggiling to complete work for your deadlines? <br>
+                One too many times...<br>
+            </p>
+            </article>
+            <form id="submission" action="POST">
+                <input type="text" name="useremail" placeholder="Email">
+                <br>
+                <button class="authBtn" id="magicLinkBtn">Sign In</button>
+                <button class="authBtn"  id="button">Google Login</button>
+            </form> 
+        </main>
+    </div>
+    <footer>
+        <p>Developed by a girl codes</p>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> 
+<script src="/frontEnd/js/login.js"></script>
+<script>
+    const { createClient } = supabase;
+    supabase = createClient('https://twphegmcopuxhufqbpfg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I')
+    
+    const btn = document.getElementById('button')
+    btn.addEventListener("click",(event)=>{
+        event.preventDefault()
+        async function signInWithGoogle(){
+            const { user, session, error } = await supabase.auth.signIn(
+                {provider: 'google'},
+                {redirectTo:"http://68.183.39.213callback"}
+            );
+        }
+        signInWithGoogle();
+    })
+</script>
+</html>
