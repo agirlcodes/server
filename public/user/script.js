@@ -23,13 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalendar();
   // load();
   // renderRow();
-  
   taskBtn.addEventListener("click", addEntry, false)
   //RENDERING FUNCTIONS 
   function addEntry(event){
-    // load()
     event.preventDefault();
-    // load();
       console.log("task button is responding")
       // FORM THAT FEEDS DATA TO DATABASE
         let taskValue = setTasks.value;
@@ -44,10 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         todoList.push(obj);
         save();
       }
-  //   tableBtn.addEventListener("click", )
-  // function addTableData(e){
-  //   e.preventDefault
-  //   load();
+    load();
   // }
     // SAVE INPUT TO DATABASE
       function save() {
@@ -233,10 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
         //       }
         // }
       }
-      
-
-
-      // RE LINK YOUR TABLE TO RENDER NEW ROWS USING DATA INPUT FROM THE DATABASE AND NOT DIRECTLY FROM THE CLIENTSIDE
 // let todoObj= []
 // console.log(todoObj)
     //RENDERING TASK TABLE

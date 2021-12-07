@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.static("user"));
 
 // SUPABASE
 import pkg from "@supabase/supabase-js";
@@ -18,8 +19,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 //SELECT TASKS
 app.get("/tasks", async (req, res) => {
-	let { projects, error } = await supabase.from("projects").select("*");
-	res.json(projects);
+	let { data, error } = await supabase.from("projects").select("*");
+	res.json(data);
 });
 
 //INSERT TASKS
