@@ -221,9 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
               dayHeaderFormat:{
                   weekday:"short"},
               dayMaxEvents: true,
-              // selectMirror: true,
-              // editable:true,
               events: [],
+              displayEventEnd: true, 
+              eventBackgroundColor: "pink",
+              eventBorderColor: "white",
             });
         
             calendar.render();

@@ -1,14 +1,11 @@
 import express from "express";
 import cors from "cors";
-
 // EXPRESS
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// app.use(express.static("user"));
-
 // SUPABASE
 import pkg from "@supabase/supabase-js";
 const { createClient } = pkg;
@@ -16,6 +13,11 @@ const supabaseUrl = "https://twphegmcopuxhufqbpfg.supabase.co";
 const supabaseKey =
 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I";
 const supabase = createClient(supabaseUrl, supabaseKey);
+// JS CLASSES
+import Task from './public/user/models.js'
+const calendarTask = Task;
+// console.log(calendarTask.deadline())
+
 
 //SELECT TASKS
 // console.log(supabase)
