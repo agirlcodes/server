@@ -14,8 +14,8 @@ const supabaseKey =
 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I";
 const supabase = createClient(supabaseUrl, supabaseKey);
 // JS CLASSES
-import Task from './public/user/models.js'
-const calendarTask = Task;
+// import Task from './public/user/models.js'
+// const calendarTask = Task;
 // console.log(calendarTask.deadline())
 
 

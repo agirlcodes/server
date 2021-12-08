@@ -1,9 +1,4 @@
-// CHANGE HEADER FORMAT OF DATE
-// CHANGE WEEKLY DATE FORMAT
-// import e = require("express");
 // TAKE MODALS OFF
-
-// import { Console } from "console";
 
 document.addEventListener('DOMContentLoaded', () => {
   // CALLING SUPABASE
@@ -43,9 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
       // RELOADS PAGE ON INPUT
           location.reload()
         }
+          // JS CLASS
+          class Task{
+            constructor(taskValue, dateValue){
+                this.taskValue = taskValue;
+                this.dateValue = dateValue; 
+                // this.done = done
+                console.log("task being Created");
+            }
+            alertMessage(){
+                let date = new Date();
+                // console.log(date.getFullYear())
+                console.log(date.getDate())
+                // console.log(this.dateValue.getDate())
+                console.log(this.dateValue)
+                let calc = this.dateValue - date.getDate();
+                // console.log(calc)
+                // return calc
+          
+            // console.log(`welcome tasks, you have ${this.taskValue} deadline coming up and only ${this.dateValue} to do it!`)
+            }
+        }
+        let myTask = new Task(dateValue)
+        console.log(myTask)
       // SAVE INPUT TO DATABASE
       function save() {
-        fetch('http://68.183.39.213/userdata', {
+        fetch('http://localhost:3000/userdata', {
           method: 'POST',
           headers: {
             'Accept':'application/json',
@@ -56,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     // GETTING DATA FROM DATABASE 
       function load() {
-        fetch('http://68.183.39.213/userdata')
+        fetch('http://localhost:3000/userdata')
           .then(res => res.json())
           .then(data => {
             let dataArray = data;
@@ -118,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               // if (todoList.id == userTaskid);
                               done = !done
                               console.log(done)
-                              fetch('http://68.183.39.213/userdata/', {
+                              fetch('http://localhost:3000/userdata/', {
                                 method: 'PUT',
                                 headers: {
                                   'Accept':'application/json',
@@ -131,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               save()
                             }
                       function deleteItem(){
-                          fetch('http://68.183.39.213/userdata', {
+                          fetch('http://localhost:3000/userdata', {
                             headers: {
                               'Accept':'application/json',
                               'Content-Type':'application/json'
@@ -148,57 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
               })   
           })
       }
-      // RE LINK YOUR TABLE TO RENDER NEW ROWS USING DATA INPUT FROM THE DATABASE AND NOT DIRECTLY FROM THE CLIENTSIDE
-  
-      //     // IF CHECKBOX STATUS IS true/false strike through
-      //     checkboxCell.checked = done;
-      //     // console.log(done)
-      //     if(done){
-      //       tr.classList.add("strike"); 
-      //     }else{
-      //       tr.classList.remove("strike");  
-      //     }
-      //     // console.log(checkboxCell.done)
-      //     function deleteItem(e){
-      //       // function dataDelete(){
-      //         e.preventDefault();
-      //         fetch('http://68.183.39.213/userdata', {
-      //           headers: {
-      //             'Accept':'application/json',
-      //             'Content-Type':'application/json'
-      //           },
-      //           method: 'DELETE',
-      //           body: JSON.stringify({id:this.dataset.id}) 
-      //         })
-      //         console.log("I have been deleted")
-      //         console.log({id:this.dataset.id})
-      //         // }
-      //         //event remove from calendar
-      //         calendar.getEventById(this.dataset.id).remove();
-      //         // save();
-      //         tr.remove();
-      //       }
-      //     //GETTING SUPABASE TO SAVE DONE STATUS
-      //     // console.log(done)
-      //     function checkboxCallback(){
-      //       tr.classList.toggle("strike"); 
-      //       if (todoList.id == this.dataset.id);
-      //       // done = !done
-      //       fetch('http://68.183.39.213/userdata/${userdata.done}', {
-      //         method: 'PUT',
-      //         headers: {
-      //           'Accept':'application/json',
-      //           'Content-Type':'application/json'
-      //         },
-      //         body: JSON.stringify({done: done})
-      //       })
-      //       // update()
-      //       // save()
-      //       console.log(id)
-      //       console.log(done)
-      //       // console.log(save)
-      //     }
-      //   }
     //CALENDAR API
     function initCalendar(){
       var calendarEl = document.getElementById('calendar');
@@ -252,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else{
         // ADDING TASK TO DATABASE
         console.log("adding to database")
-        fetch('http://68.183.39.213/tasks', {
+        fetch('http://localhost:3000/tasks', {
             method: 'POST',
             headers: {
               'Accept':'application/json',
@@ -268,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // DELETE TASKS
   // add task to option
   console.log("has Ip address")
-  fetch('http://68.183.39.213/tasks')
+  fetch('http://localhost:3000/tasks')
   .then(response =>response.json())
   .then(data =>{ 
     let editData = document.getElementById('editTaskList')
@@ -282,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteBtn.addEventListener('click', () => {
         let taskId = document.getElementById("editTaskList").value
         console.log(taskId)
-            fetch('http://68.183.39.213/tasks/', {
+            fetch('http://localhost:3000/tasks/', {
               headers: {
                 'Content-type': 'application/json'
               },
@@ -295,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   //API FOR TO-DO LIST
-  fetch('http://68.183.39.213/tasks')
+  fetch('http://localhost:3000/tasks')
   .then(response =>response.json())
   .then(response =>{ 
     let data = response
