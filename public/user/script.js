@@ -267,7 +267,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
    // DELETE TASKS
   // add task to option
-  fetch('http://localhost:3000/tasks')
+  console.log("has Ip address")
+  fetch('http://68.183.39.213/tasks')
   .then(response =>response.json())
   .then(data =>{ 
     let editData = document.getElementById('editTaskList')
@@ -310,11 +311,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // error coming out null in console log
     const logoutButton = document.getElementById('logoutBtn')
     console.log(logoutButton)
-    logoutButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const { error } = await supabase.auth.signOut(
+    logoutButton.addEventListener('click', async () => {
+        // event.preventDefault();
+        const { error } = await supabase.auth.signOut()
           // {redirectTo:"backEnd/html/login.html"}
-        )
+        // )
         console.log("bye")
         console.log(error)
     })
