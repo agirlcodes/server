@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="http://68.183.39.213/login.css"> -->
+    <!-- <link rel="stylesheet" href="http://68.183.39.213:3000/login.css"> -->
     <link rel="stylesheet" href="css/login.css">
     <title>LogIn to your calender</title>
 </head>
@@ -44,8 +44,8 @@
         async function signInWithGoogle(){
             const { user, session, error } = await supabase.auth.signIn(
                 {provider: 'google'},
-                {redirectTo:"http://68.183.39.213/user/"}
-                // {redirectTo:"http://68.183.39.213/user/"}
+                {redirectTo:"http://68.183.39.213:3000/user/"}
+                // {redirectTo:"http://68.183.39.213:3000/user/"}
             );
         }
         signInWithGoogle();
