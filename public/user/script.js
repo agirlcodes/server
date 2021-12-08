@@ -53,16 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
           location.reload()
         }
       // SAVE INPUT TO DATABASE
-      // function save() {
-      //   fetch('http://localhost:3000/userdata', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Accept':'application/json',
-      //       'Content-Type':'application/json'
-      //     },
-      //     body: JSON.stringify(todoList)
-      //   })
-      // }
+      function save() {
+        fetch('http://localhost:3000/userdata', {
+          method: 'POST',
+          headers: {
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify(todoList)
+        })
+      }
     // GETTING DATA FROM DATABASE 
       function load() {
         fetch('http://localhost:3000/userdata')
@@ -198,67 +198,69 @@ document.addEventListener('DOMContentLoaded', () => {
   // JS CLASS
 
   // ADD TASKS
-  // let addTaskBtn = document.getElementById('addTaskBtn')
-  // addTaskBtn.addEventListener('click', () => {
-  //   // e.preventDefault();
-  //   console.log("i have been pressed:  added btn")
-  //   const taskAdded = document.getElementById('taskAdded').value
-  //   // CAPITALISING FIRST LETTER OF WORDS
-  //   const taskFormat = taskAdded.charAt(0).toUpperCase() + taskAdded.slice(1)
-  //   // NOT ALLOWING EMPTY INPUT FIELD
-  //     if(taskFormat === ""){
-  //       console.log("Missing input")
-  //       alert("Please fill in a task name")
-  //     }
-  //     else{
-  //       // ADDING TASK TO DATABASE
-  //       console.log("adding to database")
-  //       fetch('http://localhost:3000/tasks', {
-  //           method: 'POST',
-  //           headers: {
-  //             'Accept':'application/json',
-  //             'Content-Type':'application/json'
-  //           },
-  //           body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
-  //       })
-  //       .then(res => res.json())
-  //       .then(data => alert("you have submitted a task"))
-  //     }
-  //   })
+  let addTaskBtn = document.getElementById('addTaskBtn')
+  addTaskBtn.addEventListener('click', () => {
+    // e.preventDefault();
+    console.log("i have been pressed:  added btn")
+    const taskAdded = document.getElementById('taskAdded').value
+    // CAPITALISING FIRST LETTER OF WORDS
+    const taskFormat = taskAdded.charAt(0).toUpperCase() + taskAdded.slice(1)
+    // NOT ALLOWING EMPTY INPUT FIELD
+      if(taskFormat === ""){
+        console.log("Missing input")
+        alert("Please fill in a task name")
+      }
+      else{
+        // ADDING TASK TO DATABASE
+        console.log("adding to database")
+        fetch('/tasks', {
+            method: 'POST',
+            headers: {
+              'Accept':'application/json',
+              'Content-Type':'application/json'
+            },
+            body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
+        })
+        .then(res => res.json())
+        .then(data => alert("you have submitted a task"))
+      }
+    })
   
   //  // DELETE TASKS
   // // add task to option
   // console.log("has Ip address")
-  // fetch('http://localhost:3000/tasks')
-  // .then(response =>response.json())
-  // .then(data =>{ 
-  //   let editData = document.getElementById('editTaskList')
-  //   data.forEach(task =>{
-  //     let taskId = task.id
-  //     let taskName = task.task
-  //     editData.innerHTML += `
-  //       <option class="deleteData" value="${taskId}">${taskName}</option>`
+  fetch('/tasks')
+  .then(response =>response.json())
+  .then(data =>{ 
+    let editData = document.getElementById('editTaskList')
+    data.forEach(task =>{
+      let taskId = task.id
+      let taskName = task.task
+      editData.innerHTML += `
+         <option class="deleteData" value="${taskId}">${taskName}</option>`
   //     })  
-  //     let deleteBtn = document.getElementById('removeTask')
-  //     deleteBtn.addEventListener('click', () => {
-  //       let taskId = document.getElementById("editTaskList").value
-  //       console.log(taskId)
-  //           fetch('http://localhost:3000/tasks/', {
-  //             headers: {
-  //               'Content-type': 'application/json'
-  //             },
-  //               method: 'DELETE',
-  //               body: JSON.stringify({id:taskId})
-  //             })
-  //           })
+      let deleteBtn = document.getElementById('removeTask')
+      deleteBtn.addEventListener('click', () => {
+        let taskId = document.getElementById("editTaskList").value
+        console.log(taskId)
+            fetch('/tasks/', {
+              headers: {
+                'Content-type': 'application/json'
+              },
+                method: 'DELETE',
+                body: JSON.stringify({id:taskId})
+              })
+            })
         
-  //     })
+      })
+  })
 
   
   //API FOR TO-DO LIST
-  fetch('http://localhost:3000/tasks')
+  fetch('/tasks')
   .then(response =>response.json())
   .then(response =>{ 
+    console.log("I am working")
     let data = response
     let selectData = document.getElementById('selectData')
       for (let i = 0; i < data.length; i++) {
