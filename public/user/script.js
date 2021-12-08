@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // TO DO LIST
     
-    
+    // let serverLocalHost = "http://68.183.39.213";
+
     todoMain();
     
     let messageLocation = document.getElementById('welcomeMessage')
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       // SAVE INPUT TO DATABASE
       function save() {
-        fetch('http://localhost:3000/userdata', {
+        fetch('http://68.183.39.213/userdata', {
           method: 'POST',
           headers: {
             'Accept':'application/json',
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     // GETTING DATA FROM DATABASE 
       function load() {
-        fetch('http://localhost:3000/userdata')
+        fetch('http://68.183.39.213/userdata')
           .then(res => res.json())
           .then(data => {
             let dataArray = data;
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               // if (todoList.id == userTaskid);
                               done = !done
                               console.log(done)
-                              fetch('http://localhost:3000/userdata/', {
+                              fetch('http://68.183.39.213/userdata/', {
                                 method: 'PUT',
                                 headers: {
                                   'Accept':'application/json',
@@ -143,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               save()
                             }
                       function deleteItem(){
-                          fetch('http://localhost:3000/userdata', {
+                          fetch('http://68.183.39.213/userdata', {
                             headers: {
                               'Accept':'application/json',
                               'Content-Type':'application/json'
@@ -216,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else{
         // ADDING TASK TO DATABASE
         console.log("adding to database")
-        fetch('http://localhost:3000/tasks', {
+        fetch('http://68.183.39.213/tasks', {
             method: 'POST',
             headers: {
               'Accept':'application/json',
@@ -232,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // DELETE TASKS
   // add task to option
   console.log("has Ip address")
-  fetch('http://localhost:3000/tasks')
+  fetch('http://68.183.39.213/tasks')
   .then(response =>response.json())
   .then(data =>{ 
     let editData = document.getElementById('editTaskList')
@@ -246,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteBtn.addEventListener('click', () => {
         let taskId = document.getElementById("editTaskList").value
         console.log(taskId)
-            fetch('http://localhost:3000/tasks/', {
+            fetch('http://68.183.39.213/tasks/', {
               headers: {
                 'Content-type': 'application/json'
               },
@@ -259,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   //API FOR TO-DO LIST
-  fetch('http://localhost:3000/tasks')
+  fetch('http://68.183.39.213/tasks')
   .then(response =>response.json())
   .then(response =>{ 
     let data = response
