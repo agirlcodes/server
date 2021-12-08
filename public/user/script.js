@@ -3,6 +3,8 @@
 // import e = require("express");
 // TAKE MODALS OFF
 
+// import { Console } from "console";
+
 document.addEventListener('DOMContentLoaded', () => {
   // CALLING SUPABASE
     const { createClient } = supabase;
@@ -57,20 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('http://localhost:3000/userdata')
           .then(res => res.json())
           .then(data => {
-            console.log(data)
             let dataArray = data;
-            // console.log("i am working?")
             let table = document.getElementById("todoTable");
             dataArray.forEach(todoObj => {
-              // console.log("i am working?")
               let todo = todoObj.usertask
               let date = todoObj.date
               let userTaskid = todoObj.id
-              let done = todoObj.done
-              // console.log(todoObj.user_id)
-              // return todo,date,userTaskid
-              // function renderRow(todo, date, userTaskid, done){
-                
+              let done = todoObj.done                
                 //ADDING TAABLE TO LIST
                 let tr = document.createElement("tr");
                 table.appendChild(tr);
@@ -242,9 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
       calendar.addEvent( event )
     }
   }
-  
-  
-  
+
   // ADD TASKS
   let addTaskBtn = document.getElementById('addTaskBtn')
   addTaskBtn.addEventListener('click', (e) => {
@@ -281,26 +274,30 @@ document.addEventListener('DOMContentLoaded', () => {
   .then(data =>{ 
     let editData = document.getElementById('editTaskList')
     data.forEach(task =>{
+      let taskId = task.id
+      let taskName = task.task
       editData.innerHTML += `
-          <option id="noDups" id="${task.id}">${task.task}</option>`
+        <option id="${taskId}">${taskName}</option>`
       })
+      
+      let deleteBtn = document.getElementById('removeTask')
+      deleteBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        let taskValue = document.getElementById("editTaskList")
+        // .querySelectorAll("option")
+        // console.log(taskValue.)
+ 
+        // fetch('http://localhost:3000/tasks/', {
+        //   headers: {
+        //     'Content-type': 'application/json'
+        //   },
+        //     method: 'DELETE',
+        //     body: JSON.stringify({id:taskId})
+        //   })
+        // })
     })
+  })
   // DELETE TASKS
-  let deleteBtn = document.getElementById('removeTask')
-    deleteBtn.addEventListener('click', (e) => {-
-      e.preventDefault();
-      console.log(`You have clicked this button ${deleteBtn}`)
-      // console.log(deleteBtn.parentElement.id)
-      // let taskCall = document.getElementsByTagName()
-      let taskId = document.getElementById(`${task.id}`)
-      console.log(`ready to delete ${taskId}`)
-      // fetch('http://localhost:3000/tasks/${el.id}', {
-      //   method: 'DELETE'
-          // headers: {
-          //   'Content-type': 'application/json'
-          // }
-      // })
-        })
   
   //API FOR TO-DO LIST
   fetch('http://localhost:3000/tasks')

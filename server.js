@@ -37,8 +37,9 @@ app.delete("/tasks", async (req, res) => {
 	const { data, error } = await supabase
 		.from("projects")
 		.delete()
-		.match({ id: id });
-	// console.log(id)
+		.match({ id: req.body.id});
+	console.log(req.body.id)
+	console.log(data, error)
 });
 
 //INSERT USERDATA
