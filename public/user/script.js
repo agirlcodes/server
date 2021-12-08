@@ -4,63 +4,57 @@ document.addEventListener('DOMContentLoaded', () => {
   // CALLING SUPABASE
     const { createClient } = supabase;
     supabase = createClient('https://twphegmcopuxhufqbpfg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I')
+
     // TO DO LIST
-  
+    
+    
     todoMain();
-  
+    
+    let messageLocation = document.getElementById('welcomeMessage')
+    let currentUser = supabase.auth.user()
+    let userName = currentUser.identities[0].identity_data.name
+    class userEnter{
+      constructor(name){
+        this.name=name
+      }
+      messageToUser(){
+        `Welcome ${this.name}, ready to organise?`
+      }
+    }
+    
+    let userMessage = new userEnter(userName)
+    messageLocation.innerHTML = `Welcome <i>${userMessage.name}</i>, ready to organise?`
+    // userMessage.messageToUser();
     function todoMain(){
-    // SET TASKS SECTIONS
-    let setTasks = document.getElementById('selectData');
-    let monthCat = document.getElementById('dateValue')
-    let taskBtn = document.getElementById('dataToCalendar');
-    let calendar;
-    let todoList = [];
-    initCalendar();
-    load(); 
-  
-    taskBtn.addEventListener("click", addEntry, false)
-    //RENDERING FUNCTIONS 
-    function addEntry(event){
-      event.preventDefault();
-      console.log("task button is responding")
-      // FORM THAT FEEDS DATA TO DATABASE
-      let taskValue = setTasks.value;
-      let dateValue = monthCat.value;
-      let obj = {
-        // id: todoList.length,
-        user_id:supabase.auth.user().id,
-        usertask: taskValue,
-        date: dateValue,
-        done: false
-      };
-      todoList.push(obj);
-      save();
+      // SET TASKS SECTIONS
+      let setTasks = document.getElementById('selectData');
+      let monthCat = document.getElementById('dateValue')
+      let taskBtn = document.getElementById('dataToCalendar');
+      let calendar;
+      let todoList = [];
+      initCalendar();
+      load(); 
+      
+      taskBtn.addEventListener("click", addEntry, false)
+      //RENDERING FUNCTIONS 
+      function addEntry(event){
+        event.preventDefault();
+        console.log("task button is responding")
+        // FORM THAT FEEDS DATA TO DATABASE
+        let taskValue = setTasks.value;
+        let dateValue = monthCat.value;
+        let obj = {
+          // id: todoList.length,
+          user_id:supabase.auth.user().id,
+          usertask: taskValue,
+          date: dateValue,
+          done: false
+        };
+        todoList.push(obj);
+        save();
       // RELOADS PAGE ON INPUT
           location.reload()
         }
-          // JS CLASS
-          class Task{
-            constructor(taskValue, dateValue){
-                this.taskValue = taskValue;
-                this.dateValue = dateValue; 
-                // this.done = done
-                console.log("task being Created");
-            }
-            alertMessage(){
-                let date = new Date();
-                // console.log(date.getFullYear())
-                console.log(date.getDate())
-                // console.log(this.dateValue.getDate())
-                console.log(this.dateValue)
-                let calc = this.dateValue - date.getDate();
-                // console.log(calc)
-                // return calc
-          
-            // console.log(`welcome tasks, you have ${this.taskValue} deadline coming up and only ${this.dateValue} to do it!`)
-            }
-        }
-        let myTask = new Task(dateValue)
-        console.log(myTask)
       // SAVE INPUT TO DATABASE
       function save() {
         fetch('http://localhost:3000/userdata', {
@@ -130,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       }else{
                         tr.classList.remove("strike");  
                       }
-                      console.log(checkboxCell)
+                      // console.log(checkboxCell)
                       function checkboxCallback(){
                               tr.classList.toggle("strike"); 
                               // if (todoList.id == userTaskid);
@@ -157,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             method: 'DELETE',
                             body: JSON.stringify({id:userTaskid}) 
                           })
+                          location.reload()
                           console.log("I have been deleted")
                           console.log(userTaskid)
                           //event remove from calendar
@@ -166,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
               })   
           })
       }
+      
     //CALENDAR API
     function initCalendar(){
       var calendarEl = document.getElementById('calendar');
@@ -202,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
       calendar.addEvent( event )
     }
   }
+  // JS CLASS
 
   // ADD TASKS
   let addTaskBtn = document.getElementById('addTaskBtn')
