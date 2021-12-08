@@ -102,36 +102,33 @@ document.addEventListener('DOMContentLoaded', () => {
             
                       // GET DATA FROM TABLE TO ADD TO CALENDAR 
                       addEvent({
-                        // id: userTaskid,
                         title: todo, 
                         start: date
                       })
                       // IF CHECKBOX STATUS IS true/false strike through
-                      // checkboxCell.checked = done;
-                      // console.log(done)
-                      // if(true){
-                      //   tr.classList.add("strike"); 
-                      // }else{
-                      //   tr.classList.remove("strike");  
-                      // }
-                      // console.log(checkboxCell.done)
+                      checkboxCell.checked = done;
+                      if(true){
+                        tr.classList.add("strike"); 
+                      }else{
+                        tr.classList.remove("strike");  
+                      }
+                      console.log(checkboxCell)
                       function checkboxCallback(){
                               tr.classList.toggle("strike"); 
-                              if (todoList.id == userTaskid);
+                              // if (todoList.id == userTaskid);
                               done = !done
+                              console.log(done)
                               fetch('http://localhost:3000/userdata/', {
                                 method: 'PUT',
                                 headers: {
                                   'Accept':'application/json',
                                   'Content-Type':'application/json'
                                 },
-                                body: JSON.stringify({done: done})
+                                body: JSON.stringify({done: done, id: userTaskid})
                               })
-                              // update()
+                              
+                              // location.reload()
                               save()
-                              // console.log(id)
-                              console.log(done)
-                              // console.log(save)
                             }
                       function deleteItem(){
                           fetch('http://localhost:3000/userdata', {
@@ -240,8 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ADD TASKS
   let addTaskBtn = document.getElementById('addTaskBtn')
-  addTaskBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+  addTaskBtn.addEventListener('click', () => {
+    // e.preventDefault();
     console.log("i have been pressed:  added btn")
     const taskAdded = document.getElementById('taskAdded').value
     // CAPITALISING FIRST LETTER OF WORDS
@@ -263,11 +260,11 @@ document.addEventListener('DOMContentLoaded', () => {
             body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => alert("you have submitted a task"))
       }
     })
   
-  // EDIT TASKS
+   // DELETE TASKS
   // add task to option
   fetch('http://localhost:3000/tasks')
   .then(response =>response.json())
@@ -277,27 +274,23 @@ document.addEventListener('DOMContentLoaded', () => {
       let taskId = task.id
       let taskName = task.task
       editData.innerHTML += `
-        <option id="${taskId}">${taskName}</option>`
-      })
-      
+        <option class="deleteData" value="${taskId}">${taskName}</option>`
+      })  
       let deleteBtn = document.getElementById('removeTask')
-      deleteBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        let taskValue = document.getElementById("editTaskList")
-        // .querySelectorAll("option")
-        // console.log(taskValue.)
- 
-        // fetch('http://localhost:3000/tasks/', {
-        //   headers: {
-        //     'Content-type': 'application/json'
-        //   },
-        //     method: 'DELETE',
-        //     body: JSON.stringify({id:taskId})
-        //   })
-        // })
-    })
-  })
-  // DELETE TASKS
+      deleteBtn.addEventListener('click', () => {
+        let taskId = document.getElementById("editTaskList").value
+        console.log(taskId)
+            fetch('http://localhost:3000/tasks/', {
+              headers: {
+                'Content-type': 'application/json'
+              },
+                method: 'DELETE',
+                body: JSON.stringify({id:taskId})
+              })
+            })
+        
+      })
+
   
   //API FOR TO-DO LIST
   fetch('http://localhost:3000/tasks')

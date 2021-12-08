@@ -22,13 +22,13 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 app.get("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects").select("*");
 	res.json(data);
-	console.log(data, error);
+	// console.log(data, error);
 });
 
 //INSERT TASKS
 app.post("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects").insert(req.body);
-	console.log(data);
+	// console.log(data);
 	// console.log(req.body);
 });
 
@@ -38,14 +38,14 @@ app.delete("/tasks", async (req, res) => {
 		.from("projects")
 		.delete()
 		.match({ id: req.body.id});
-	console.log(req.body.id)
-	console.log(data, error)
+	// console.log(req.body.id)
+	// console.log(data, error)
 });
 
 //INSERT USERDATA
 app.post("/userdata", async (req, res) => {
 	let { data, error } = await supabase.from("userdata").insert(req.body);
-	console.log(data);
+	// console.log(data);
 	// console.log(req.body)
 });
 
@@ -62,18 +62,20 @@ app.delete("/userdata", async (req, res) => {
 		.from("userdata")
 		.delete()
 		.match({ id: req.body.id });
-	console.log(data);
-	console.log(req.body.id);
+	// console.log(data);
+	// console.log(req.body.id);
 });
 
 //UPLOAD USERDATA
 app.put("/userdata", async (req, res) => {
 	const { data, error } = await supabase
 		.from("userdata")
-		.update({ done: req.body.done })
+		.update({
+			done: req.body.done
+		})
 		.match({ id: req.body.id });
-	console.log(req.body);
-	console.log(data);
+	console.log(req.body.done);
+	console.log(data, error);
 });
 
 //LOGIN
