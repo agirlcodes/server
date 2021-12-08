@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutButton.addEventListener('click', async (event) => {
         event.preventDefault();
         const { error } = await supabase.auth.signOut(
-          {redirectTo:"backEnd/html/login.html"}
+          // {redirectTo:"backEnd/html/login.html"}
         )
         console.log("bye")
         console.log(error)
