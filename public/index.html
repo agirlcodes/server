@@ -44,8 +44,8 @@
         async function signInWithGoogle(){
             const { user, session, error } = await supabase.auth.signIn(
                 {provider: 'google'},
-                {redirectTo:"http://localhost:3000/user"}
-                // {redirectTo:"http://68.183.39.213/user/"}
+                // {redirectTo:"http://localhost:3000/user"}
+                {redirectTo:"http://68.183.39.213/user/"}
                 // {redirectTo:"http://68.183.39.213:3000/user"}
             );
         }
