@@ -258,9 +258,9 @@ data.forEach(task =>{
           method: 'DELETE',
           body: JSON.stringify({id:taskId})
         })
-        location.reload()
       })
     })
+    location.reload()
 }
 
 
