@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       // SAVE INPUT TO DATABASE
       function save() {
-        fetch('http://localhost:3000/userdata', {
+        fetch('http://68.183.39.213:3000/userdata', {
           method: 'POST',
           headers: {
             'Accept':'application/json',
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     // GETTING DATA FROM DATABASE 
       function load() {
-        fetch('http://localhost:3000/userdata')
+        fetch('http://68.183.39.213:3000/userdata')
           .then(res => res.json())
           .then(data => {
             let dataArray = data;
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               // if (todoList.id == userTaskid);
                               done = !done
                               console.log(done)
-                              fetch('http://localhost:3000/userdata/', {
+                              fetch('http://68.183.39.213:3000/userdata', {
                                 method: 'PUT',
                                 headers: {
                                   'Accept':'application/json',
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               save()
                             }
                       function deleteItem(){
-                          fetch('http://localhost:3000/userdata', {
+                          fetch('http://68.183.39.213:3000/userdata', {
                             headers: {
                               'Accept':'application/json',
                               'Content-Type':'application/json'
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //  // DELETE TASKS
   // // add task to option
   // console.log("has Ip address")
-axios.get('http://localhost:3000/tasks')
+axios.get('http://68.183.39.213:3000/tasks')
 .then(res => { 
   let getData = res.data
   deleteTaskList(getData)
@@ -249,7 +249,7 @@ data.forEach(task =>{
       deleteBtn.addEventListener('click', () => {
         let taskId = document.getElementById("editTaskList").value
         console.log(taskId)
-            fetch('http://localhost:3000/tasks', {
+            fetch('http://68.183.39.213:3000/tasks', {
               headers: {
                 'Content-type': 'application/json'
               },
