@@ -259,8 +259,8 @@ data.forEach(task =>{
           body: JSON.stringify({id:taskId})
         })
       })
+      location.reload()
     })
-    location.reload()
 }
 
 
