@@ -229,11 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
   //  // DELETE TASKS
   // // add task to option
   // console.log("has Ip address")
-axios({
-  method: 'get',
-  url: 'http://localhost:300/tasks'
-}).then(res => console.log(res))
-.catch(err => console.error(err))
+// axios({
+//   method: 'get',
+//   url: 'http://localhost:300/tasks'
+// }).then(res => console.log(res))
+// .catch(err => console.error(err))
 
   fetch('/tasks')
   .then(response =>response.json())
