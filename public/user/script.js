@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 body: JSON.stringify({done: done, id: userTaskid})
                               })
                               
-                              location.reload()
+                              // location.reload()
                               save()
                             }
                       function deleteItem(){
@@ -148,12 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             method: 'DELETE',
                             body: JSON.stringify({id:userTaskid}) 
                           })
-                          // location.reload()
                           console.log("I have been deleted")
                           console.log(userTaskid)
                           //event remove from calendar
                           calendar.getEventById(this.id).remove();
                           tr.remove();
+                          location.reload()
                   }
               })   
           })
@@ -212,19 +212,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       else{
         // ADDING TASK TO DATABASE
-        // location.reload()
         console.log("adding to database")
         fetch('http://68.183.39.213:3000/tasks', {
-            method: 'POST',
-            headers: {
-              'Accept':'application/json',
-              'Content-Type':'application/json'
-            },
-            body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
+          method: 'POST',
+          headers: {
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
         })
         .then(res => res.json())
         .then(data => alert("you have submitted a task"))
       }
+      location.reload()
       
     })
   
