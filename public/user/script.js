@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => alert("you have submitted a task"))
       }
+      location.reload()
     })
   
   //  // DELETE TASKS
