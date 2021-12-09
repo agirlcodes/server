@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             method: 'DELETE',
                             body: JSON.stringify({id:userTaskid}) 
                           })
-                          location.reload()
+                          // location.reload()
                           console.log("I have been deleted")
                           console.log(userTaskid)
                           //event remove from calendar
@@ -258,7 +258,7 @@ data.forEach(task =>{
           method: 'DELETE',
           body: JSON.stringify({id:taskId})
         })
-        location.reload()
+        // location.reload()
       })
     })
 }
