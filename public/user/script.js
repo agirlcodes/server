@@ -240,25 +240,25 @@ axios.get('http://68.183.39.213:3000/tasks')
 function deleteTaskList(data){
 let editData = document.getElementById('editTaskList')
 data.forEach(task =>{
-      let taskId = task.id
-      let taskName = task.task
-      editData.innerHTML += `
-         <option class="deleteData" value="${taskId}">${taskName}</option>`
-  //     })  
-      let deleteBtn = document.getElementById('removeTask')
-      deleteBtn.addEventListener('click', () => {
-        let taskId = document.getElementById("editTaskList").value
-        console.log(taskId)
-            fetch('http://68.183.39.213:3000/tasks', {
-              headers: {
-                'Content-type': 'application/json'
-              },
-                method: 'DELETE',
-                body: JSON.stringify({id:taskId})
-              })
-              // location.reload()
-            })
-          })
+  let taskId = task.id
+  let taskName = task.task
+  editData.innerHTML += `
+      <option class="deleteData" value="${taskId}">${taskName}</option>`
+//     })  
+  let deleteBtn = document.getElementById('removeTask')
+  deleteBtn.addEventListener('click', () => {
+    let taskId = document.getElementById("editTaskList").value
+    console.log(taskId)
+      fetch('http://68.183.39.213:3000/tasks', {
+        headers: {
+          'Content-type': 'application/json'
+        },
+          method: 'DELETE',
+          body: JSON.stringify({id:taskId})
+        })
+        location.reload()
+      })
+    })
 }
 
 
