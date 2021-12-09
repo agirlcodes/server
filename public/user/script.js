@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else{
         // ADDING TASK TO DATABASE
         console.log("adding to database")
-        fetch('http://68.183.39.213/tasks', {
+        fetch('http://68.183.39.213:3000/tasks', {
             method: 'POST',
             headers: {
               'Accept':'application/json',
@@ -295,7 +295,7 @@ data.forEach(task =>{
 
   
   //API FOR TO-DO LIST
-  fetch('http://68.183.39.213/tasks')
+  fetch('http://68.183.39.213:3000/tasks')
   .then(response =>response.json())
   .then(response =>{ 
     console.log("I am working")
