@@ -256,7 +256,7 @@ data.forEach(task =>{
                 method: 'DELETE',
                 body: JSON.stringify({id:taskId})
               })
-              location.reload()
+              // location.reload()
             })
           })
 }
@@ -315,9 +315,6 @@ data.forEach(task =>{
     logoutButton.addEventListener('click', async (event) => {
         event.preventDefault();
         const { error } = await supabase.auth.signOut()
-          // {redirectTo:"backEnd/html/login.html"}
-        // )
-        console.log("bye")
         console.log({error})
     })
   
