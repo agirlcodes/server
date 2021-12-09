@@ -1,5 +1,7 @@
 // TAKE MODALS OFF
 document.addEventListener('DOMContentLoaded', () => {
+  // import axios from 'axios';
+  // const axios = require('axios');
   // CALLING SUPABASE
     const { createClient } = supabase;
     supabase = createClient('https://twphegmcopuxhufqbpfg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I')
@@ -213,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else{
         // ADDING TASK TO DATABASE
         console.log("adding to database")
-        fetch('/tasks', {
+        fetch('http//:localhost:3000/tasks', {
             method: 'POST',
             headers: {
               'Accept':'application/json',
@@ -229,17 +231,17 @@ document.addEventListener('DOMContentLoaded', () => {
   //  // DELETE TASKS
   // // add task to option
   // console.log("has Ip address")
-// axios({
-//   method: 'get',
-//   url: 'http://localhost:300/tasks'
-// }).then(res => console.log(res))
-// .catch(err => console.error(err))
+axios.get('http://localhost:3000/tasks')
+.then(res => { 
+  let getData = res.data
+  deleteTaskList(getData)
+  console.log(getData)
+})
+.catch(err => console.error(err))
 
-  fetch('http://localhost:3000/tasks')
-  .then(response =>response.json())
-  .then(data =>{ 
-    let editData = document.getElementById('editTaskList')
-    data.forEach(task =>{
+function deleteTaskList(data){
+let editData = document.getElementById('editTaskList')
+data.forEach(task =>{
       let taskId = task.id
       let taskName = task.task
       editData.innerHTML += `
@@ -259,7 +261,39 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         
       })
-  })
+}
+
+
+
+
+
+
+
+  // fetch('http://localhost:3000/tasks')
+  // .then(response =>response.json())
+  // .then(data =>{ 
+  //   let editData = document.getElementById('editTaskList')
+  //   data.forEach(task =>{
+  //     let taskId = task.id
+  //     let taskName = task.task
+  //     editData.innerHTML += `
+  //        <option class="deleteData" value="${taskId}">${taskName}</option>`
+  // //     })  
+  //     let deleteBtn = document.getElementById('removeTask')
+  //     deleteBtn.addEventListener('click', () => {
+  //       let taskId = document.getElementById("editTaskList").value
+  //       console.log(taskId)
+  //           fetch('/tasks/', {
+  //             headers: {
+  //               'Content-type': 'application/json'
+  //             },
+  //               method: 'DELETE',
+  //               body: JSON.stringify({id:taskId})
+  //             })
+  //           })
+        
+  //     })
+  // })
 
   
   //API FOR TO-DO LIST

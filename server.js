@@ -17,7 +17,7 @@ const supabaseKey =
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const port = 'http://localhost:3000';
+const port = 3000;
 // const port = process.env.PORT || 'http://localhost:3000';
 app.listen(port, (error) => {
 	console.log(port)
@@ -28,13 +28,13 @@ app.listen(port, (error) => {
 	}
 });
 
-app.get('/',(req, res) => {
-    res.sendFile(`${__dirname}/public/index.html`)
-	console.log("i have been viewed?")
-  })
-app.get('/user',(req, res) => {
-    res.sendFile(`${__dirname}/public/user/index.html`)
-  })
+// app.get('/',(req, res) => {
+//     res.sendFile(`${__dirname}/public/index.html`)
+// 	console.log("i have been viewed?")
+//   })
+// app.get('/user',(req, res) => {
+//     res.sendFile(`${__dirname}/public/user/index.html`)
+//   })
 //SELECT TASKS
 // console.log(supabase)
 app.get("/tasks", async (req, res) => {
