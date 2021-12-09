@@ -283,7 +283,9 @@ data.forEach(task =>{
     console.log(logoutButton)
     logoutButton.addEventListener('click', async (event) => {
         event.preventDefault();
-        const { error } = await supabase.auth.signOut()
+        const { error } = await supabase.auth.signOut(
+          {redirectTo:"http://68.183.39.213:3000/"}
+        )
         console.log({error})
     })
   
