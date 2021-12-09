@@ -28,13 +28,6 @@ app.listen(port, (error) => {
 	}
 });
 
-// app.get('/',(req, res) => {
-//     res.sendFile(`${__dirname}/public/index.html`)
-// 	console.log("i have been viewed?")
-//   })
-// app.get('/user',(req, res) => {
-//     res.sendFile(`${__dirname}/public/user/index.html`)
-//   })
 //SELECT TASKS
 // console.log(supabase)
 app.get("/tasks", async (req, res) => {
