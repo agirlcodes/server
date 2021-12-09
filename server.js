@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+// const http = require("http");
 // const cors = require("cors");
 // EXPRESS
 const app = express();
@@ -15,7 +16,8 @@ const supabaseKey =
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
+console.log(port)
 app.listen(port, (error) => {
 	if(error){
 	console.log(error)
