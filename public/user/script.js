@@ -1,7 +1,5 @@
 // TAKE MODALS OFF
 document.addEventListener('DOMContentLoaded', () => {
-  // import axios from 'axios';
-  // const axios = require('axios');
   // CALLING SUPABASE
     const { createClient } = supabase;
     supabase = createClient('https://twphegmcopuxhufqbpfg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I')
@@ -215,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else{
         // ADDING TASK TO DATABASE
         console.log("adding to database")
-        fetch('http//:localhost:3000/tasks', {
+        fetch('http://68.183.39.213/tasks', {
             method: 'POST',
             headers: {
               'Accept':'application/json',
@@ -237,7 +235,7 @@ axios.get('http://localhost:3000/tasks')
   deleteTaskList(getData)
   console.log(getData)
 })
-.catch(err => console.error(err))
+//.catch(err => console.error(err))
 
 function deleteTaskList(data){
 let editData = document.getElementById('editTaskList')
@@ -251,16 +249,16 @@ data.forEach(task =>{
       deleteBtn.addEventListener('click', () => {
         let taskId = document.getElementById("editTaskList").value
         console.log(taskId)
-            fetch('/tasks/', {
+            fetch('http://localhost:3000/tasks', {
               headers: {
                 'Content-type': 'application/json'
               },
                 method: 'DELETE',
                 body: JSON.stringify({id:taskId})
               })
+              location.reload()
             })
-        
-      })
+          })
 }
 
 
@@ -297,7 +295,7 @@ data.forEach(task =>{
 
   
   //API FOR TO-DO LIST
-  fetch('http://localhost:3000/tasks')
+  fetch('http://68.183.39.213/tasks')
   .then(response =>response.json())
   .then(response =>{ 
     console.log("I am working")
