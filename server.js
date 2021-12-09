@@ -36,7 +36,9 @@ app.get("/", (req,res)=>{
 //SELECT TASKS
 // console.log(supabase)
 app.get("/tasks", async (req, res) => {
-	let { data, error } = await supabase.from("projects").select("*");
+	let { data, error } = await supabase.from("projects")
+	.select("*")
+	.where(uid() = user_id());
 	res.json(data);
 	console.log(data, error);
 }, cors());
@@ -67,7 +69,9 @@ app.post("/userdata", async (req, res) => {
 
 //SELECT USERDATA
 app.get("/userdata", async (req, res) => {
-	let { data, error } = await supabase.from("userdata").select("*");
+	let { data, error } = await supabase.from("userdata")
+	.select("*")
+	.where(uid() = user_id());
 	res.json(data);
 	// console.log(userdata)
 });
