@@ -28,6 +28,11 @@ app.listen(port, (error) => {
 	}
 });
 
+app.get("/", (req,res)=>{
+	console.log("I am here")
+	res.sendStatus(200)
+})
+
 //SELECT TASKS
 // console.log(supabase)
 app.get("/tasks", async (req, res) => {
