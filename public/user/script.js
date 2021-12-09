@@ -262,39 +262,6 @@ data.forEach(task =>{
       })
     })
 }
-
-
-
-
-
-
-
-  // fetch('http://localhost:3000/tasks')
-  // .then(response =>response.json())
-  // .then(data =>{ 
-  //   let editData = document.getElementById('editTaskList')
-  //   data.forEach(task =>{
-  //     let taskId = task.id
-  //     let taskName = task.task
-  //     editData.innerHTML += `
-  //        <option class="deleteData" value="${taskId}">${taskName}</option>`
-  // //     })  
-  //     let deleteBtn = document.getElementById('removeTask')
-  //     deleteBtn.addEventListener('click', () => {
-  //       let taskId = document.getElementById("editTaskList").value
-  //       console.log(taskId)
-  //           fetch('/tasks/', {
-  //             headers: {
-  //               'Content-type': 'application/json'
-  //             },
-  //               method: 'DELETE',
-  //               body: JSON.stringify({id:taskId})
-  //             })
-  //           })
-        
-  //     })
-  // })
-
   
   //API FOR TO-DO LIST
   fetch('http://68.183.39.213:3000/tasks')
