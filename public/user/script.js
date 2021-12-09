@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // }).then(res => console.log(res))
 // .catch(err => console.error(err))
 
-  fetch('/tasks')
+  fetch('http://localhost:3000/tasks')
   .then(response =>response.json())
   .then(data =>{ 
     let editData = document.getElementById('editTaskList')
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   //API FOR TO-DO LIST
-  fetch('/tasks')
+  fetch('http://localhost:3000/tasks')
   .then(response =>response.json())
   .then(response =>{ 
     console.log("I am working")
