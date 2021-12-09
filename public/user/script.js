@@ -312,13 +312,13 @@ data.forEach(task =>{
   // error coming out null in console log
     const logoutButton = document.getElementById('logoutBtn')
     console.log(logoutButton)
-    logoutButton.addEventListener('click', async () => {
-        // event.preventDefault();
+    logoutButton.addEventListener('click', async (event) => {
+        event.preventDefault();
         const { error } = await supabase.auth.signOut()
           // {redirectTo:"backEnd/html/login.html"}
         // )
         console.log("bye")
-        console.log(error)
+        console.log({error})
     })
   
   // end of DOM load
