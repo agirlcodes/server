@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const { createClient } = supabase;
     supabase = createClient('https://twphegmcopuxhufqbpfg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I')
 
-    // TO DO LIST
-    todoMain();
     // JS CLASSES 
     let messageLocation = document.getElementById('welcomeMessage')
     let currentUser = supabase.auth.user()
@@ -20,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     let userMessage = new userEnter(userName)
     messageLocation.innerHTML = `Welcome <i>${userMessage.name}</i>, ready to organise?`
+    // TO DO LIST
+    todoMain();
   
     
     function todoMain(){
