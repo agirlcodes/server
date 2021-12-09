@@ -38,7 +38,7 @@ app.get("/", (req,res)=>{
 app.get("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects")
 	.select("*")
-	.where(uid() = user_id());
+	// .where(uid() = user_id());
 	res.json(data);
 	console.log(data, error);
 }, cors());
