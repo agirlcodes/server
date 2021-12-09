@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 body: JSON.stringify({done: done, id: userTaskid})
                               })
                               
-                              // location.reload()
+                              location.reload()
                               save()
                             }
                       function deleteItem(){
