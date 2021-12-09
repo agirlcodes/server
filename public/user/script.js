@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       else{
         // ADDING TASK TO DATABASE
-        location.reload()
+        // location.reload()
         console.log("adding to database")
         fetch('http://68.183.39.213:3000/tasks', {
             method: 'POST',
