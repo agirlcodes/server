@@ -1,13 +1,14 @@
 import express from "express";
 import cors from "cors";
-// const http = require("http");
-// const cors = require("cors");
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 // EXPRESS
 const app = express();
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 // SUPABASE
 import pkg from "@supabase/supabase-js";
 const { createClient } = pkg;
@@ -17,8 +18,8 @@ const supabaseKey =
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const port = process.env.PORT || 3000;
-console.log(port)
 app.listen(port, (error) => {
+	console.log(port)
 	if(error){
 	console.log(error)
 	}else{
