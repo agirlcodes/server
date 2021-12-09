@@ -279,15 +279,15 @@ data.forEach(task =>{
   
   // LOGOUT
   // error coming out null in console log
-    const logoutButton = document.getElementById('logoutBtn')
-    console.log(logoutButton)
-    logoutButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const { error } = await supabase.auth.signOut(
-          {redirectTo:"http://68.183.39.213:3000/"}
-        )
-        console.log({error})
-    })
+    // const logoutButton = document.getElementById('logoutBtn')
+    // console.log(logoutButton)
+    // logoutButton.addEventListener('click', async (event) => {
+    //     event.preventDefault();
+    //     const { error } = await supabase.auth.signOut(
+    //       {redirectTo:"http://68.183.39.213:3000/"}
+    //     )
+    //     console.log({error})
+    // })
   
   // end of DOM load
   })
