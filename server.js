@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-const __dirname = dirname(fileURLToPath(import.meta.url));
+//import { dirname } from 'path';
+//import { fileURLToPath } from 'url';
+//const __dirname = dirname(fileURLToPath(import.meta.url));
 // EXPRESS
 const app = express();
 app.use(cors());
@@ -34,7 +34,7 @@ app.get("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects").select("*");
 	res.json(data);
 	console.log(data, error);
-});
+}, cors());
 
 //INSERT TASKS
 app.post("/tasks", async (req, res) => {
