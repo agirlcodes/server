@@ -221,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
         })
-        .then(res => res.json())
-        .then(data => alert("you have submitted a task"))
+        // .then(res => res.json())
+        // .then(data => alert("you have submitted a task"))
+        location.reload()
       }
-      location.reload()
       
     })
   
