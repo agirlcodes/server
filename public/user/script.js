@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         // .then(res => res.json())
         location.reload()
-        .then(alert("you have submitted a task"))
+        // .then(alert("you have submitted a task"))
       }
       
     })
