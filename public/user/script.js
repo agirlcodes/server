@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify(todoList)
         })
-        location.reload()
       }
     // GETTING DATA FROM DATABASE 
       function load() {
