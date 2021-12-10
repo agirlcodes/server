@@ -39,6 +39,7 @@ app.get("/tasks", async (req, res) => {
 	let { data, error } = await supabase.from("projects")
 	.select("*")
 	// .where(uid() = user_id());
+	// not working, data will not display!!!
 	res.json(data);
 	console.log(data, error);
 }, cors());
@@ -98,11 +99,5 @@ app.put("/userdata", async (req, res) => {
 	console.log(data, error);
 });
 
-//LOGIN
-app.post("/auth", async (req, res) => {
-	let { user, session, error } = await supabase.auth.signUp(request.body);
-	console.log(user);
-	console.log(session);
-});
 
 

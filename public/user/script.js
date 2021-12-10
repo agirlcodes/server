@@ -227,15 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   
   //  // DELETE TASKS
-  // // add task to option
-  // console.log("has Ip address")
+  //add task to option, debugging fetch
 axios.get('http://68.183.39.213:3000/tasks')
 .then(res => { 
   let getData = res.data
   deleteTaskList(getData)
   console.log(getData)
 })
-//.catch(err => console.error(err))
 
 function deleteTaskList(data){
 let editData = document.getElementById('editTaskList')
@@ -244,7 +242,6 @@ data.forEach(task =>{
   let taskName = task.task
   editData.innerHTML += `
       <option class="deleteData" value="${taskId}">${taskName}</option>`
-    // })  
   let deleteBtn = document.getElementById('removeTask')
   deleteBtn.addEventListener('click', () => {
     let taskId = document.getElementById("editTaskList").value
@@ -256,7 +253,7 @@ data.forEach(task =>{
           method: 'DELETE',
           body: JSON.stringify({id:taskId})
         })
-        // location.reload()
+        location.reload()
       })
     })
 }
@@ -274,19 +271,6 @@ data.forEach(task =>{
             <option>${el.task}</option>  `
         }
       })
-  
-  // LOGOUT
-  // error coming out null in console log
-    // const logoutButton = document.getElementById('logoutBtn')
-    // console.log(logoutButton)
-    // logoutButton.addEventListener('click', async (event) => {
-    //     event.preventDefault();
-    //     const { error } = await supabase.auth.signOut(
-    //       {redirectTo:"http://68.183.39.213:3000/"}
-    //     )
-    //     console.log({error})
-    // })
-  
   // end of DOM load
   })
   

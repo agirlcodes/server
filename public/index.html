@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="http://localhost:3000/login.css"> -->
     <link rel="stylesheet" href="css/login.css">
-    <title>LogIn to your calender</title>
+    <title>Get Organised</title>
 </head>
 <body>
     <header>
@@ -17,23 +16,21 @@
         <main>
             <article>
                 <p>How often do you find yourself struggiling to complete work for your deadlines? <br>
-                One too many times...<br>
+                One too many times?<br>
+                Welcome to your new Task Calendar!
             </p>
             </article>
             <form id="submission" action="POST">
-                <!-- <input type="text" name="useremail" placeholder="Email">
-                <br>
-                <button class="authBtn" id="magicLinkBtn">Sign In</button> -->
+                <h3>Log in via Google</h3>
                 <button class="authBtn"  id="button">Google Login</button>
             </form> 
         </main>
     </div>
     <footer>
-        <p>Developed by a girl codes</p>
+        <p>Developed by Agirlcodes</p>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> 
-<!-- <script src="/frontEnd/js/login.js"></script> -->
 <script>
     const { createClient } = supabase;
     supabase = createClient('https://twphegmcopuxhufqbpfg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNDc0NjI5NSwiZXhwIjoxOTUwMzIyMjk1fQ.uUoHk5B21XcyCpeJt_my-DunpgVaB0UVn3DqFXz7o1I')
@@ -44,9 +41,7 @@
         async function signInWithGoogle(){
             const { user, session, error } = await supabase.auth.signIn(
                 {provider: 'google'},
-                // {redirectTo:"http://localhost:3000/user"}
                 {redirectTo:"http://68.183.39.213/user/"}
-                // {redirectTo:"http://68.183.39.213:3000/user"}
             );
         }
         signInWithGoogle();
