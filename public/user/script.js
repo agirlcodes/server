@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify(todoList)
         })
+        location.reload()
       }
     // GETTING DATA FROM DATABASE 
       function load() {
@@ -199,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ADD TASKS
   let addTaskBtn = document.getElementById('addTaskBtn')
-  addTaskBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+  addTaskBtn.addEventListener('click', () => {
+    // e.preventDefault();
     console.log("i have been pressed:  added btn")
     const taskAdded = document.getElementById('taskAdded').value
     // CAPITALISING FIRST LETTER OF WORDS
@@ -256,7 +257,7 @@ data.forEach(task =>{
           method: 'DELETE',
           body: JSON.stringify({id:taskId})
         })
-        location.reload()
+        // location.reload()
       })
     })
 }
