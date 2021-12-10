@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ADD TASKS
   let addTaskBtn = document.getElementById('addTaskBtn')
-  addTaskBtn.addEventListener('click', () => {
-    // e.preventDefault();
+  addTaskBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     console.log("i have been pressed:  added btn")
     const taskAdded = document.getElementById('taskAdded').value
     // CAPITALISING FIRST LETTER OF WORDS
@@ -221,9 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify({task:taskFormat, user_id: supabase.auth.user().id})
         })
-        // .then(res => res.json())
         location.reload()
-        // .then(alert("you have submitted a task"))
       }
       
     })
