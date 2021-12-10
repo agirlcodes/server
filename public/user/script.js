@@ -231,15 +231,15 @@ document.addEventListener('DOMContentLoaded', () => {
   //  // DELETE TASKS
   // // add task to option
   // console.log("has Ip address")
-axios.get('http://68.183.39.213:3000/tasks')
-.then(res => { 
-  let getData = res.data
-  deleteTaskList(getData)
-  console.log(getData)
-})
+// axios.get('http://68.183.39.213:3000/tasks')
+// .then(res => { 
+//   let getData = res.data
+//   deleteTaskList(getData)
+//   console.log(getData)
+// })
 //.catch(err => console.error(err))
 
-function deleteTaskList(data){
+// function deleteTaskList(data){
 let editData = document.getElementById('editTaskList')
 data.forEach(task =>{
   let taskId = task.id
@@ -258,10 +258,10 @@ data.forEach(task =>{
           method: 'DELETE',
           body: JSON.stringify({id:taskId})
         })
-        // location.reload()
+        location.reload()
       })
     })
-}
+// }
   
   //API FOR TO-DO LIST
   fetch('http://68.183.39.213:3000/tasks')
